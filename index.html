@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Hoop demo page">
+  <meta name="author" content="Emre Pişkin">
+  <title>Hoop — Emre Pişkin</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Pangolin&display=swap" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="style.css">
+
+  <script type="text/javascript" src="hoop.js"></script>
+</head>
+<body>
+  <div class="center-container">
+    <div class="box header">
+      Hoop! İsmail Abi'yle rastgele selam verin.<br />
+      Cümleye tıklayıp ✂️ kopyalayın,<br />
+      hatrınızı soran eşe dosta 📨 gönderin.<br />
+
+      <a href="https://github.com/pemre/hoop" title="Star pemre/hoop on GitHub">
+        ⭐ Yıldızla
+      </a>
+      <a href="https://github.com/pemre/hoop/fork" title="Fork pemre/hoop on GitHub">
+        🍴 Çatalla
+      </a>
+      <a href="https://github.com/pemre" title="Follow @pemre on GitHub">
+        💌️ Takip et @pemre
+      </a>
+    </div>
+
+    <div class="box" id="sentence" onclick="copyTextToClipboardFrom('#sentence')"></div>
+  </div>
+
+  <script type="text/javascript">
+      hoop(groups, 'sentence');
+
+      function copyTextToClipboardFrom(selector) {
+        const text = document.querySelector(selector).innerText;
+        navigator.clipboard.writeText(text);
+        alert('Kopyalandi: ' + text);
+      }
+  </script>
+</body>
+</html>
