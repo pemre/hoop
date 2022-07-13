@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Hoop settings page">
+    <meta name="author" content="Emre Pişkin">
+    <title>Hoop — Emre Pişkin</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pangolin&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body style="padding: 1rem">
+<button type="button" onclick="saveSentences()">Kaydet</button>
+<button type="button" onclick="restoreSentences()">Tüm değişiklikleri geri al</button>
+<br/>
+<textarea id="text-1" rows="5"></textarea><br/>
+<textarea id="text-2" rows="5"></textarea><br/>
+<textarea id="text-3" rows="5"></textarea><br/>
+<textarea id="text-4" rows="5"></textarea><br/>
+<textarea id="text-5" rows="5"></textarea><br/>
+<textarea id="text-6" rows="5"></textarea><br/>
+<textarea id="text-7" rows="5"></textarea>
+
+<script type="text/javascript" src="cumle-kaliplari.js"></script>
+<script type="text/javascript">
+  const loadSentences = () => {
+    let groups = JSON.parse(localStorage.getItem('groups'))
+
+    if (!groups) {
+      console.log('"groups" local storage not found. Loading from groupsInitial...')
+      groups = groupsInitial
+    } else {
+      console.log('"groups" is loaded from local storage:', groups)
+    }
+
+    Array.prototype.forEach.call(groups, function (group, index) {
+      document.querySelector('#text-' + ++index).innerHTML = group.join('\n')
+    })
+  }
+
+  const restoreSentences = () => {
+    if (confirm('Tüm cümle kalıplarınızı silmek istediğinize emin misiniz? Bu işlemden sonra ön tanımlı kalıplar kullanılacak.')) {
+      localStorage.removeItem('groups')
+      console.log('Restoration is completed.')
+      loadSentences()
+    } else {
+      console.log('Restoration is cancelled.')
+    }
+  }
+
+  const saveSentences = () => {
+    let groups = []
+    for (let i = 1; i < 8; i++) {
+      let group = document.querySelector('#text-' + i).value
+      group = group.split('\n')
+      console.log('Pushing group:', i, group)
+      groups.push(group)
+    }
+
+    localStorage.setItem('groups', JSON.stringify(groups))
+    console.log('Saved "groups" into local storage.')
+    alert('Hoop! Kalıplarınız kaydedildi.')
+  }
+
+  loadSentences()
+</script>
+</body>
+</html>

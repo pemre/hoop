@@ -11,4 +11,8 @@ Cümleye tıklayıp ✂️ kopyalayın, hatrınızı soran eşe dosta 📨 gönd
 
 Hemen kullanın: https://pemre.github.io/hoop/
 
-<img src="./hoop.gif" width="600" alt="Demo of MemeCards" />
+<img src="./hoop.gif" width="600" alt="Hoop! demosu" />
+
+Ayrıca ayarlardan kendi cümlelerinizi üretin:
+
+<img src="./ayarlar.png" width="600" alt="Hoop! ayarlar sayfasi" />

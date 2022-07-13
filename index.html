@@ -14,13 +14,15 @@
     <link rel="stylesheet" type="text/css" href="style.css">
 
     <script type="text/javascript" src="hoop.js"></script>
+    <script type="text/javascript" src="cumle-kaliplari.js"></script>
 </head>
 <body>
 <div class="center-container">
     <div class="box header">
-        Hoop! İsmail Abi'yle rastgele selam verin.<br/>
-        Cümleye tıklayıp ✂️ kopyalayın,<br/>
-        hatrınızı soran eşe dosta 📨 gönderin.<br/>
+        <p>Hoop! İsmail Abi'yle rastgele selam verin.</p>
+        <p>Cümleye tıklayıp ✂️ kopyalayın,<br/>
+            hatrınızı soran eşe dosta 📨 gönderin.</p>
+        <p>Cümle kalıplarını <a href="./ayarlar.html" title="Ayarlar">🧰️ buradan</a> değiştirebilirsiniz.</p>
 
         <a href="https://github.com/pemre/hoop" title="Star pemre/hoop on GitHub">
             ⭐ Yıldızla
@@ -37,6 +39,15 @@
 </div>
 
 <script type="text/javascript">
+  let groups = JSON.parse(localStorage.getItem('groups'))
+
+  if (!groups) {
+    console.log('"groups" local storage not found. Loading from groupsInitial...')
+    groups = groupsInitial
+  } else {
+    console.log('"groups" is loaded from local storage:', groups)
+  }
+
   hoop(groups, 'sentence')
 
   function copyTextToClipboardFrom (selector) {
